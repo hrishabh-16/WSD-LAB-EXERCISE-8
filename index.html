@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid;
+      }
+    </style>
+    <table id="books-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image Url</th>
+      </tr>
+    </table>
+    <script>
+      const table = document.getElementById("books-table");
+      fetch(
+        ""
+      )
+        .then((res) => {
+          res.json().then((data) => {
+            data.forEach((element) => {
+              table.innerHTML += `<tr><td>${element["name"]}</td><td>${element["description"]}</td><td>${element["price"]}</td><td><a href="${element["image_url"]}">${element["image_url"]}</td></tr>`;
+              console.log(element);
+            });
+          });
+        })
+        .catch((err) => console.error(err));
+    </script>
+  </body>
+</html>
