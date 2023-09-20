@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-      table,
-      th,
-      td {
-        border: 1px solid;
-      }
+        body{
+            background-color: #0ab80a;
+        }
+        .product {
+            border-bottom: 1px solid #ccc; 
+            padding-bottom: 10px; 
+            margin-bottom: 10px; 
+            display: flex; 
+        }
+
+        .product img {
+            max-width: 150px;
+            margin-right: 10px; 
+        }
     </style>
-    <table id="books-table">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Image Url</th>
-      </tr>
-    </table>
-    <script>
-      const table = document.getElementById("books-table");
-      fetch(
-        ""
-      )
-        .then((res) => {
-          res.json().then((data) => {
-            data.forEach((element) => {
-              table.innerHTML += `<tr><td>${element["name"]}</td><td>${element["description"]}</td><td>${element["price"]}</td><td><a href="${element["image_url"]}">${element["image_url"]}</td></tr>`;
-              console.log(element);
-            });
-          });
-        })
-        .catch((err) => console.error(err));
-    </script>
-  </body>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Product Catalog</h1>
+
+                <!-- Search Bar -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                </div>
+                
+                <!-- Sorting Options -->
+                <div class="form-group">
+                    <label for="sortBy">Sort by:</label>
+                    <select class="form-control" id="sortBy">
+                        <option value="name">Name</option>
+                        <option value="price">Price</option>
+                    </select>
+                </div>
+
+                <!-- Product List -->
+                <div id="productList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
